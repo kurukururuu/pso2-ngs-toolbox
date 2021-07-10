@@ -24,9 +24,10 @@
           position="topleft"
           :options="{ title: { false: 'Go big!', true: 'Be regular' } }"
         />
-        <l-tile-layer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <l-image-overlay
+          :url="url"
+          :bounds="bounds"
+        ></l-image-overlay>
       </l-map>
     </client-only>
   </div>
@@ -36,21 +37,22 @@
 /* eslint-disable no-console */
 export default {
   name: 'LeafletMaps',
-  props: {
 
-  },
   data () {
     return {
+      bounds: [[12, 12], [128, 128]],
       isScrolling: false,
+      // crs: L.CRS.Simple,
       mapsLoading: false,
       mapOptions: {
         zoomSnap: 0.5,
         gestureHandling: true
       },
+      interactive: true,
       filterHidden: true,
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      zoom: 5,
-      center: [-2.4381773, 115.4824783],
+      url: '/img/mapTile.png',
+      zoom: 0.2,
+      center: [40, 128],
       drawControl: {}
     }
   },
